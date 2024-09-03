@@ -1,0 +1,123 @@
+<div class="rsce_header <?= $this->class ?>" <?= $this->cssID ?>>
+  <div class="rsce_header__container container">
+    <div class="rsce_header__logo">
+      <?php if ( $icon= $this->arrData['getImageObject']($this -> icon )): ?>
+        <img
+          class="icon"
+          src="<?= $icon->src ?>"
+          alt="<?= $icon->alt ?: $this->icon_alt ?>"
+          title="<?= $this->icon_title ?>"
+          <?= $icon->imgSize ?>
+        >
+      <?php endif; ?>
+
+    </div>
+    <div class="mobile-menu">
+      <?php if ( $this->logo_chbx || $this->title ): ?>
+        <div class="mobile-menu__header">
+          <?php if ( $this->logo_chbx ): ?>
+            <div class="mobile-menu__logo">
+              <?php if ( $icon= $this->arrData['getImageObject']($this -> icon )): ?>
+                <img
+                  class=""
+                  src="<?= $icon->src ?>"
+                  alt="<?= $icon->alt ?: $this->icon_alt ?>"
+                  title="<?= $this->icon_title ?>"
+                  <?= $icon->imgSize ?>
+                >
+              <?php endif; ?>
+            </div>
+          <?php endif; ?>
+          <?php if( $this->title): ?>
+            <<?= $this -> title['unit'] ?> class="mobile-menu__title">
+              <?= $this -> title['value'] ?>
+            </<?= $this -> title['unit'] ?>>
+          <?php endif; ?>
+        </div>
+      <?php endif; ?>
+      <?php if( $this->module ): ?>
+        {{insert_module::<?=$this->module ?>}}
+      <?php endif ?>
+
+      <?php if ( $this->sml_list || $this->contacts_list ): ?>
+        <div class="mobile-menu__footer">
+          <?php if ( $this->contacts_title ): ?>
+            <p class="mobile-menu__subtitle">
+              <?= $this->contacts_title ?>
+            </p>
+          <?php endif; ?>
+          <ul class="mobile-menu__contacts">
+            <?php foreach ( $this->contacts_list as $contact ): ?>
+             <li class="mobile-menu__contact">
+               <a href="<?= $contact->link ?>"
+                  class="mobile-menu__contact_link"
+                  title="<?= $contact->link_title ?>"
+                  aria-label="<?= $contact->link_aria_label ?>"
+               >
+                 <?php if ( $icon= $this->arrData['getImageObject']($contact -> icon )): ?>
+                   <img
+                     class="mobile-menu__contact_img"
+                     src="<?= $icon->src ?>"
+                     alt="<?= $icon->alt ?: $contact->icon_alt ?>"
+                     title="<?= $contact->icon_title ?>"
+                     <?= $icon->imgSize ?>
+                   >
+                 <?php endif; ?>
+                 <span>
+                   <?= $contact->link_text ?>
+                 </span>
+               </a>
+             </li>
+            <?php endforeach; ?>
+          </ul>
+          <?php if ( $this->sml_title ): ?>
+            <p class="mobile-menu__subtitle">
+              <?= $this->sml_title ?>
+            </p>
+          <?php endif; ?>
+          <ul class="mobile-menu__sml">
+            <?php foreach ( $this->sml_list as $item ): ?>
+              <li class="mobile-menu__sml_item">
+                <a href="<?= $item->link ?>"
+                   class="mobile-menu__sml_link"
+                   title="<?= $item->link_title ?>"
+                   aria-label="<?= $item->link_aria_label ?>"
+                >
+                  <?php if ( $icon= $this->arrData['getImageObject']($item -> icon )): ?>
+                    <img
+                      class="mobile-menu__sml_img"
+                      src="<?= $icon->src ?>"
+                      alt="<?= $icon->alt ?: $item->icon_alt ?>"
+                      title="<?= $item->icon_title ?>"
+                      <?= $icon->imgSize ?>
+                    >
+                  <?php endif; ?>
+                </a>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+      <?php endif; ?>
+    </div>
+    <div class="rsce_header__button">
+      <button
+        aria-label="burger_button"
+        class="
+          rsce_hamburger
+          js-hamburger
+          hamburger--<?= $this->hamburger ?>
+        "
+        type="button"
+
+      >
+        <span class="hamburger-box">
+          <span
+            class="hamburger-inner"
+            style="background-color: #<?= $this->colorpicker ?>"
+          ></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
